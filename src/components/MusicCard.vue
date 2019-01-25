@@ -13,6 +13,7 @@
 		<div class="player">
 			<audio controls id="music-player"/>
 		</div>
+		<button class="remove-fav-btn" @click="$emit('incrementBtn')">Retirer des favoris</button>
 	</div>
 </template>
 
@@ -25,7 +26,7 @@ export default {
 <style scoped>
 #card {
 	border: 1px solid #dedede;
-	border-radius: 5px;
+	border-radius: 10px;
 	padding: 15px;
 	display: flex;
 	flex-direction: column;
@@ -56,10 +57,16 @@ export default {
 
 #music-player {
 	width: 450px;
+	margin: 15px 0 0 0;
 }
 
 #album-img {
 	width: 75px;
 	height: 75px;
+}
+
+.remove-fav-btn {
+	align-self: flex-start;
+	margin: 15px 0;
 }
 </style>
