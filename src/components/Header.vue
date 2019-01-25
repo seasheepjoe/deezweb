@@ -23,7 +23,7 @@ export default {
 	align-items: center;
 	background-color: #383b43;
 	margin: 0;
-	padding: 20px;
+	padding: 20px 0;
 }
 
 a {
@@ -38,8 +38,8 @@ a:hover {
 }
 
 #title {
-	margin: 0 15px;
 	color: #fff;
+	margin: 0 50px;
 }
 
 .nav-link {
