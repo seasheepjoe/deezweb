@@ -17,4 +17,14 @@ export default {
 </script>
 
 <style>
+@font-face {
+	font-family: "futura";
+	src: url("./assets/FuturaPTLight.otf");
+}
+
+* {
+	font-family: "futura";
+	margin: 0;
+	padding: 0;
+}
 </style>
