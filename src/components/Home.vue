@@ -4,7 +4,6 @@
 			<h1 id="welcome-title">Bienvenue sur Deezweb</h1>
 			<h4 id="welcome-description">L'application qui permet facilement d'écouter de la musique.</h4>
 		</div>
-		<MusicCard/>
 	</div>
 </template>
 

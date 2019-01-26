@@ -1,17 +1,14 @@
 <template>
 	<div id="card">
 		<div class="basic-info">
-			<img
-				src="https://images.store.hmv.com/app_/responsive/HMVStore/media/product/433373/01-433373.jpg?w=500"
-				id="album-img"
-			>
+			<img :src="track.album.cover" id="album-img">
 			<div id="music-info">
-				<p id="music-title">Lose Yourself</p>
-				<p id="music-album">Eminem / Curtain Call</p>
+				<p id="music-title">{{ track.title }}</p>
+				<p id="music-album">{{ track.artist.name }} / {{ track.album.title }}</p>
 			</div>
 		</div>
 		<div class="player">
-			<audio controls id="music-player"/>
+			<audio controls id="music-player" :src="track.preview"/>
 		</div>
 		<button class="remove-fav-btn" @click="$emit('incrementBtn')">Retirer des favoris</button>
 	</div>
@@ -19,7 +16,10 @@
 
 <script>
 export default {
-	name: "Music"
+	name: "Music",
+	props: {
+		track: Object
+	}
 };
 </script>
 
