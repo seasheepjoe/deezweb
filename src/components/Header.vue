@@ -4,7 +4,7 @@
 		<div class="nav-items">
 			<router-link class="nav-link" to="/">Accueil</router-link>
 			<router-link class="nav-link" to="/search">Recherche</router-link>
-			<router-link class="nav-link" to="/search">Mes favoris</router-link>
+			<router-link class="nav-link" to="/favorites">Mes favoris</router-link>
 		</div>
 	</div>
 </template>
