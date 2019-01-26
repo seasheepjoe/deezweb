@@ -10,7 +10,8 @@
 		<div class="player">
 			<audio controls id="music-player" :src="track.preview"/>
 		</div>
-		<button class="remove-fav-btn" @click="$emit('removeFav')">Retirer des favoris</button>
+		<button v-if="isFavorite === true" class="remove-fav-btn" @click="removeFav">Retirer des favoris</button>
+		<button v-if="isFavorite === false" class="add-fav-btn" @click="addFav">Ajouter dans les favoris</button>
 	</div>
 </template>
 
@@ -19,6 +20,18 @@ export default {
 	name: "Music",
 	props: {
 		track: Object
+	},
+	methods: {
+		addFav() {
+			this.$store.dispatch("addFavorite", this.track.id);
+		}
+	},
+	computed: {
+		isFavorite() {
+			return this.$store.state.FAVORITES.split(",")
+				.map(Number)
+				.includes(this.track.id);
+		}
 	}
 };
 </script>
