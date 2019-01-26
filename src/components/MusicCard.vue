@@ -10,7 +10,7 @@
 		<div class="player">
 			<audio controls id="music-player" :src="track.preview"/>
 		</div>
-		<button class="remove-fav-btn" @click="$emit('incrementBtn')">Retirer des favoris</button>
+		<button class="remove-fav-btn" @click="$emit('removeFav')">Retirer des favoris</button>
 	</div>
 </template>
 

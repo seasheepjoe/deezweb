@@ -19,26 +19,30 @@
 					<option value="RATING_ASC">Les mieux notés</option>
 				</select>
 			</div>
-			<button @click="getTracks" class="go-btn">Go</button>
+			<button @click="getTracks" :disabled="query === ''" class="go-btn">Go</button>
 		</div>
 		<div class="results">
+			<Loader v-if="isLoading"/>
 			<MusicCard
 				v-if="tracks.length !== 0"
 				v-for="(item, index) in tracks"
 				:key="index"
 				:track="item"
 			/>
+			<h2 v-if="gotResults === true && tracks.length === 0 && query !== ''">Aucun résultat</h2>
 		</div>
 	</div>
 </template>
 
 <script>
 import MusicCard from "@/components/MusicCard";
+import Loader from "vue-simple-spinner";
 
 export default {
 	name: "Search",
 	components: {
-		MusicCard
+		MusicCard,
+		Loader
 	},
 	data() {
 		return {
@@ -46,24 +50,31 @@ export default {
 			filter: "TRACK_ASC",
 			tracks: [],
 			baseUrl:
-				"https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?"
+				"https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?",
+			isLoading: false,
+			gotResults: false
 		};
 	},
 	methods: {
 		getTracks() {
+			this.isLoading = true;
+			this.gotResults = false;
 			let query = `q=${this.query.split(" ").join("+")}`;
 			let fetchUrl = `${this.baseUrl}${query}&order=${this.filter}`;
-			console.log(fetchUrl);
 			fetch(fetchUrl)
 				.then(response => {
 					response.json().then(res => {
 						this.tracks = res.data;
-						console.log(res);
+						this.isLoading = false;
+						this.gotResults = true;
 					});
 				})
 				.catch(err => {
 					console.log(err);
 				});
+		},
+		onPlay() {
+			this.isPlaying = true;
 		}
 	}
 };
