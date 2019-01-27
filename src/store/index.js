@@ -11,7 +11,7 @@ export default new Vuex.Store({
 		addFavorite(state, id) {
 			let favs = state.FAVORITES;
 
-			if (favs === null) {
+			if (favs === "") {
 				favs = [];
 				favs.push(id);
 			} else {
@@ -26,7 +26,7 @@ export default new Vuex.Store({
 		removeFavorite(state, id) {
 			let favs = state.FAVORITES;
 
-			if (favs !== null) {
+			if (favs !== "") {
 				favs = favs.split(',').map(Number);
 				let foundIndex = favs.findIndex((el) => el === id);
 				if (foundIndex) {
