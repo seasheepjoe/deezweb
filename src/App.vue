@@ -28,6 +28,10 @@ export default {
 	padding: 0;
 }
 
+.icon {
+	margin: 0 5px;
+}
+
 button {
 	margin: 15px 0;
 	width: fit-content;

@@ -48,10 +48,6 @@ a:hover {
 	margin: 0 50px;
 }
 
-.icon {
-	margin: 0 5px;
-}
-
 .nav-items {
 	display: flex;
 	flex-direction: row;

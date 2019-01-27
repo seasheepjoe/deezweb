@@ -93,10 +93,6 @@ export default {
 	align-self: flex-start;
 }
 
-.icon {
-	margin: 0 5px;
-}
-
 .add-fav-btn {
 	background-color: #00ba48;
 }

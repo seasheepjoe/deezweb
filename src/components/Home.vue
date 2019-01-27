@@ -7,11 +7,9 @@
 		<div v-if="$store.state.FAVORITES !== ''" class="random-favorite">
 			<Loader v-if="isLoading"/>
 			<MusicCard v-if="track !== null && !isLoading" :track="track" @onFavRemove="getRandomFav"/>
-			<button
-				v-if="track !== null && !isLoading"
-				id="random-btn"
-				@click="getRandomFav"
-			>Choisir une autre musique</button>
+			<button v-if="track !== null && !isLoading" id="random-btn" @click="getRandomFav">
+				<font-awesome-icon class="icon" icon="random"/>Choisir une autre musique
+			</button>
 		</div>
 	</div>
 </template>
@@ -89,5 +87,10 @@ export default {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+}
+
+#random-btn {
+	background-color: #4e00ff;
+	color: #fff;
 }
 </style>
