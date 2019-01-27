@@ -10,8 +10,16 @@
 		<div class="player">
 			<audio controls id="music-player" :src="track.preview"/>
 		</div>
-		<button v-if="isFavorite === true" class="remove-fav-btn" @click="removeFav">Retirer des favoris</button>
-		<button v-if="isFavorite === false" class="add-fav-btn" @click="addFav">Ajouter dans les favoris</button>
+		<button
+			v-if="isFavorite === true"
+			class="remove-fav-btn btn"
+			@click="removeFav"
+		>Retirer des favoris</button>
+		<button
+			v-if="isFavorite === false"
+			class="add-fav-btn btn"
+			@click="addFav"
+		>Ajouter dans les favoris</button>
 	</div>
 </template>
 
@@ -50,6 +58,8 @@ export default {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	width: 30%;
+	margin: 5px;
 }
 
 .basic-info {
@@ -83,7 +93,7 @@ export default {
 	height: 75px;
 }
 
-.remove-fav-btn {
+.btn {
 	align-self: flex-start;
 	margin: 15px 0;
 }
