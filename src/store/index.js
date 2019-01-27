@@ -29,7 +29,7 @@ export default new Vuex.Store({
 			if (favs !== "") {
 				favs = favs.split(',').map(Number);
 				let foundIndex = favs.findIndex((el) => el === id);
-				if (foundIndex) {
+				if (foundIndex !== -1) {
 					favs.splice(foundIndex, 1);
 					localStorage.setItem('favorites', favs);
 				}
