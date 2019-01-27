@@ -3,13 +3,13 @@
 		<h1 id="title">Deezweb</h1>
 		<div class="nav-items">
 			<router-link class="nav-link" to="/">
-				<font-awesome-icon icon="home"/>Accueil
+				<font-awesome-icon class="icon" icon="home"/>Accueil
 			</router-link>
 			<router-link class="nav-link" to="/search">
-				<font-awesome-icon icon="search"/>Recherche
+				<font-awesome-icon class="icon" icon="search"/>Recherche
 			</router-link>
 			<router-link class="nav-link" to="/favorites">
-				<font-awesome-icon icon="heartbeat"/>Mes favoris
+				<font-awesome-icon class="icon" icon="heartbeat"/>Mes favoris
 			</router-link>
 		</div>
 	</div>
@@ -48,7 +48,23 @@ a:hover {
 	margin: 0 50px;
 }
 
+.icon {
+	margin: 0 5px;
+}
+
+.nav-items {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+}
+
 .nav-link {
 	margin: 0 10px;
+	color: grey;
+}
+
+.router-link-exact-active {
+	color: white;
 }
 </style>
