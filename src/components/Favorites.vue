@@ -7,6 +7,7 @@
 				v-for="(item, index) in tracks"
 				:key="index"
 				:track="item"
+				@onFavRemove="removeFav(index)"
 			/>
 		</div>
 	</div>
@@ -36,7 +37,7 @@ export default {
 	methods: {
 		getFavorites() {
 			let favs = this.$store.state.FAVORITES.split(",").map(Number);
-			let favsList = favs.map(id => {
+			favs.map(id => {
 				fetch(`${this.baseUrl}${id}`).then(response => {
 					response.json().then(res => {
 						if (!res.error) {
@@ -45,9 +46,9 @@ export default {
 					});
 				});
 			});
-			Promise.all(favsList).then(() => {
-				this.isLoading = false;
-			});
+		},
+		removeFav(index) {
+			this.tracks.splice(index, 1);
 		}
 	}
 };

@@ -21,6 +21,7 @@ export default new Vuex.Store({
 				}
 			}
 			localStorage.setItem('favorites', favs);
+			state.FAVORITES = localStorage.getItem('favorites');
 		},
 		removeFavorite(state, id) {
 			let favs = state.FAVORITES;
@@ -33,6 +34,7 @@ export default new Vuex.Store({
 					localStorage.setItem('favorites', favs);
 				}
 			}
+			state.FAVORITES = localStorage.getItem('favorites');
 		}
 	},
 	actions: {
