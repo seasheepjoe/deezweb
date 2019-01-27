@@ -2,7 +2,6 @@
 	<div id="favorites">
 		<div id="results">
 			<p v-if="error !== ''">{{ error }}</p>
-			<Loader v-if="isLoading"/>
 			<MusicCard
 				v-if="tracks.length !== 0"
 				v-for="(item, index) in tracks"
@@ -10,7 +9,9 @@
 				:track="item"
 				@onFavRemove="removeFav(index)"
 			/>
+			<Loader v-if="isLoading"/>
 		</div>
+		<h2 v-if="gotResults === true && tracks.length === 0">Aucun résultat</h2>
 	</div>
 </template>
 
@@ -34,7 +35,8 @@ export default {
 				"https://cors-anywhere.herokuapp.com/https://api.deezer.com/track/",
 			tracks: [],
 			isLoading: true,
-			error: ""
+			error: "",
+			gotResults: false
 		};
 	},
 	methods: {
@@ -54,6 +56,7 @@ export default {
 
 			Promise.all(favsList).then(() => {
 				this.isLoading = false;
+				this.gotResults = true;
 			});
 		},
 		removeFav(index) {
@@ -64,7 +67,8 @@ export default {
 </script>
 
 <style scoped>
-#favorites {
+#favorites,
+#results {
 	margin: 10px 50px;
 }
 </style>
