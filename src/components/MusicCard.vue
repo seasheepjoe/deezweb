@@ -96,5 +96,21 @@ export default {
 .btn {
 	align-self: flex-start;
 	margin: 15px 0;
+	width: 150px;
+	height: 30px;
+	border: 1px solid transparent;
+	border-radius: 2px;
+	color: #fff;
+	font-size: 15px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.add-fav-btn {
+	background-color: #00ba48;
+}
+
+.remove-fav-btn {
+	background-color: #df0028;
 }
 </style>
