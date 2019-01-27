@@ -7,7 +7,12 @@
 		<div class="search-container">
 			<div class="input-group">
 				<label>Titre</label>
-				<input name="search-input" v-model="query">
+				<input
+					name="search-input"
+					type="text"
+					v-model="query"
+					placeholder="Rilès, Eminem, Shiawase ..."
+				>
 			</div>
 			<div class="input-group">
 				<label>Trier par :</label>
@@ -22,7 +27,7 @@
 			<button @click="getTracks" :disabled="query === ''" class="go-btn">Go</button>
 		</div>
 		<div class="results">
-			<Loader v-if="isLoading"/>
+			<Loader id="loader" v-if="isLoading"/>
 			<MusicCard
 				v-if="tracks.length !== 0"
 				v-for="(item, index) in tracks"
@@ -89,6 +94,10 @@ export default {
 	margin: 10px 50px;
 }
 
+#loader {
+	margin: 0 auto;
+}
+
 #page-title {
 	font-size: 50px;
 }
@@ -113,14 +122,17 @@ export default {
 	margin-right: 15px;
 }
 
-.input-group input {
-}
-
 .results {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
 	flex-wrap: wrap;
+}
+
+.go-btn {
+	width: 150px;
+	height: 40px;
+	background-color: #4e00ff;
 }
 </style>

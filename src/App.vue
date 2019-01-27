@@ -38,10 +38,25 @@ button {
 	height: fit-content;
 	padding: 5px;
 	border: 1px solid transparent;
-	border-radius: 2px;
+	border-radius: 3px;
 	color: #fff;
 	font-size: 15px;
 	font-weight: bold;
 	cursor: pointer;
+}
+
+input[type="text"] {
+	width: 250px;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	font-size: 16px;
+	background-color: white;
+	padding: 5px;
+	font-size: 20px;
+}
+
+select {
+	font-size: 20px;
 }
 </style>
