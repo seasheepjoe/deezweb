@@ -7,7 +7,11 @@
 		<div v-if="$store.state.FAVORITES !== ''" class="random-favorite">
 			<Loader v-if="isLoading"/>
 			<MusicCard v-if="track !== null && !isLoading" :track="track" @onFavRemove="getRandomFav"/>
-			<button id="random-btn" @click="getRandomFav">Choisir une autre musique</button>
+			<button
+				v-if="track !== null && !isLoading"
+				id="random-btn"
+				@click="getRandomFav"
+			>Choisir une autre musique</button>
 		</div>
 	</div>
 </template>
