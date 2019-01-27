@@ -1,6 +1,7 @@
 <template>
 	<div id="favorites">
 		<div id="results">
+			<p v-if="error !== ''">{{ error }}</p>
 			<Loader v-if="isLoading"/>
 			<MusicCard
 				v-if="tracks.length !== 0"
@@ -16,6 +17,7 @@
 <script>
 import MusicCard from "@/components/MusicCard.vue";
 import Loader from "vue-simple-spinner";
+import api from "@/services/ApiConfig";
 
 export default {
 	beforeMount() {
@@ -31,20 +33,27 @@ export default {
 			baseUrl:
 				"https://cors-anywhere.herokuapp.com/https://api.deezer.com/track/",
 			tracks: [],
-			isLoading: true
+			isLoading: true,
+			error: ""
 		};
 	},
 	methods: {
 		getFavorites() {
 			let favs = this.$store.state.FAVORITES.split(",").map(Number);
-			favs.map(id => {
-				fetch(`${this.baseUrl}${id}`).then(response => {
-					response.json().then(res => {
-						if (!res.error) {
-							this.tracks.push(res);
-						}
+			let favsList = favs.map(id => {
+				return api
+					.fetchById(id)
+					.then(data => {
+						if (data) this.tracks.push(data);
+					})
+					.catch(err => {
+						this.error = "Error, please reload page.";
+						this.isLoading = false;
 					});
-				});
+			});
+
+			Promise.all(favsList).then(() => {
+				this.isLoading = false;
 			});
 		},
 		removeFav(index) {
