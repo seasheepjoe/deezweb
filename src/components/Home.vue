@@ -78,4 +78,12 @@ export default {
 #welcome-description {
 	color: #26292e;
 }
+
+.random-favorite {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
 </style>
