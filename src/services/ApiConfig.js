@@ -7,7 +7,9 @@ export default {
 	fetchAll(url) {
 		return api.get(url)
 			.then(response => {
-				return Promise.resolve(response.data);
+				if (!response.data.error) {
+					return Promise.resolve(response.data);
+				}
 			})
 			.catch(err => {
 				Promise.reject(err);
