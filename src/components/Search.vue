@@ -115,4 +115,12 @@ export default {
 
 .input-group input {
 }
+
+.results {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+}
 </style>
