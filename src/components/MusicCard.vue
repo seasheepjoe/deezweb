@@ -24,6 +24,9 @@ export default {
 	methods: {
 		addFav() {
 			this.$store.dispatch("addFavorite", this.track.id);
+		},
+		removeFav() {
+			this.$store.dispatch("removeFavorite", this.track.id);
 		}
 	},
 	computed: {

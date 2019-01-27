@@ -21,11 +21,26 @@ export default new Vuex.Store({
 				}
 			}
 			localStorage.setItem('favorites', favs);
+		},
+		removeFavorite(state, id) {
+			let favs = state.FAVORITES;
+
+			if (favs !== null) {
+				favs = favs.split(',').map(Number);
+				let foundIndex = favs.findIndex((el) => el === id);
+				if (foundIndex) {
+					favs.splice(foundIndex, 1);
+					localStorage.setItem('favorites', favs);
+				}
+			}
 		}
 	},
 	actions: {
 		addFavorite(context, id) {
 			context.commit('addFavorite', id);
+		},
+		removeFavorite(context, id) {
+			context.commit('removeFavorite', id);
 		}
 	}
 });
