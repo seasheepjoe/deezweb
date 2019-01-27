@@ -27,4 +27,17 @@ export default {
 	margin: 0;
 	padding: 0;
 }
+
+button {
+	margin: 15px 0;
+	width: fit-content;
+	height: fit-content;
+	padding: 5px;
+	border: 1px solid transparent;
+	border-radius: 2px;
+	color: #fff;
+	font-size: 15px;
+	font-weight: bold;
+	cursor: pointer;
+}
 </style>

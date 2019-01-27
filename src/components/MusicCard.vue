@@ -10,16 +10,12 @@
 		<div class="player">
 			<audio controls id="music-player" :src="track.preview"/>
 		</div>
-		<button
-			v-if="isFavorite === true"
-			class="remove-fav-btn btn"
-			@click="removeFav"
-		>Retirer des favoris</button>
-		<button
-			v-if="isFavorite === false"
-			class="add-fav-btn btn"
-			@click="addFav"
-		>Ajouter dans les favoris</button>
+		<button v-if="isFavorite === true" class="remove-fav-btn btn" @click="removeFav">
+			<font-awesome-icon class="icon" icon="heart-broken"/>Retirer des favoris
+		</button>
+		<button v-if="isFavorite === false" class="add-fav-btn btn" @click="addFav">
+			<font-awesome-icon class="icon" icon="plus"/>Ajouter dans les favoris
+		</button>
 	</div>
 </template>
 
@@ -95,15 +91,10 @@ export default {
 
 .btn {
 	align-self: flex-start;
-	margin: 15px 0;
-	width: 150px;
-	height: 30px;
-	border: 1px solid transparent;
-	border-radius: 2px;
-	color: #fff;
-	font-size: 15px;
-	font-weight: bold;
-	cursor: pointer;
+}
+
+.icon {
+	margin: 0 5px;
 }
 
 .add-fav-btn {
