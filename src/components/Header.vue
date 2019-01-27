@@ -2,9 +2,15 @@
 	<div class="header">
 		<h1 id="title">Deezweb</h1>
 		<div class="nav-items">
-			<router-link class="nav-link" to="/">Accueil</router-link>
-			<router-link class="nav-link" to="/search">Recherche</router-link>
-			<router-link class="nav-link" to="/favorites">Mes favoris</router-link>
+			<router-link class="nav-link" to="/">
+				<font-awesome-icon icon="home"/>Accueil
+			</router-link>
+			<router-link class="nav-link" to="/search">
+				<font-awesome-icon icon="search"/>Recherche
+			</router-link>
+			<router-link class="nav-link" to="/favorites">
+				<font-awesome-icon icon="heartbeat"/>Mes favoris
+			</router-link>
 		</div>
 	</div>
 </template>
