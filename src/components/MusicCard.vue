@@ -27,19 +27,23 @@ export default {
 	},
 	methods: {
 		addFav() {
-			this.$store.dispatch("addFavorite", this.track.id);
+			this.$store.dispatch("addFavorite", this.track);
 			this.$emit("onFavAdd");
 		},
 		removeFav() {
-			this.$store.dispatch("removeFavorite", this.track.id);
+			this.$store.dispatch("removeFavorite", this.track);
 			this.$emit("onFavRemove");
 		}
 	},
 	computed: {
 		isFavorite() {
-			return this.$store.state.FAVORITES.split(",")
-				.map(Number)
-				.includes(this.track.id);
+			let favs = this.$store.state.FAVORITES;
+			if (favs !== "") {
+				favs = JSON.parse(favs);
+				let found = favs.find(el => el.id === this.track.id);
+				return found !== undefined;
+			}
+			return false;
 		}
 	}
 };

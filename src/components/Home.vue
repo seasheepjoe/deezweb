@@ -37,19 +37,18 @@ export default {
 	methods: {
 		getRandomFav() {
 			this.isLoading = true;
+			this.track = null;
 			let favs = this.$store.state.FAVORITES;
 			if (favs !== "") {
-				favs = favs.split(",").map(Number);
-				let randomID = favs[Math.floor(Math.random() * favs.length)];
-				api.fetchById(randomID).then(data => {
-					if (data) {
-						this.track = data;
-						this.isLoading = false;
-					}
-				});
+				favs = JSON.parse(favs);
+				if (favs.length !== 0) {
+					let randomFav = favs[Math.floor(Math.random() * favs.length)];
+					this.track = randomFav;
+				}
 			} else {
 				console.warn("No favorites");
 			}
+			this.isLoading = false;
 		}
 	}
 };

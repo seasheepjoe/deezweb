@@ -45,23 +45,12 @@ export default {
 	},
 	methods: {
 		getFavorites() {
-			let favs = this.$store.state.FAVORITES.split(",").map(Number);
-			let favsList = favs.map(id => {
-				return api
-					.fetchById(id)
-					.then(data => {
-						if (data) this.tracks.push(data);
-					})
-					.catch(err => {
-						this.error = "Error, please reload page.";
-						this.isLoading = false;
-					});
-			});
-
-			Promise.all(favsList).then(() => {
+			let favs = this.$store.state.FAVORITES;
+			if (favs !== "") {
+				favs = JSON.parse(favs);
+				this.tracks = favs;
 				this.isLoading = false;
-				this.gotResults = true;
-			});
+			}
 		},
 		removeFav(index) {
 			this.tracks.splice(index, 1);

@@ -8,30 +8,30 @@ export default new Vuex.Store({
     FAVORITES: localStorage.getItem('favorites') || ''
   },
   mutations: {
-    addFavorite(state, id) {
+    addFavorite(state, track) {
       let favs = state.FAVORITES;
 
       if (favs === '') {
         favs = [];
-        favs.push(id);
+        favs.push(track);
       } else {
-        favs = favs.split(',').map(Number);
-        if (!favs.includes(id)) {
-          favs.push(id);
+        favs = JSON.parse(favs);
+        if (!favs.includes(track)) {
+          favs.push(track);
         }
       }
-      localStorage.setItem('favorites', favs);
+      localStorage.setItem('favorites', JSON.stringify(favs));
       state.FAVORITES = localStorage.getItem('favorites');
     },
-    removeFavorite(state, id) {
+    removeFavorite(state, track) {
       let favs = state.FAVORITES;
 
       if (favs !== '') {
-        favs = favs.split(',').map(Number);
-        let foundIndex = favs.findIndex((el) => el === id);
+        favs = JSON.parse(favs);
+        let foundIndex = favs.findIndex((el) => el.id === track.id);
         if (foundIndex !== -1) {
           favs.splice(foundIndex, 1);
-          localStorage.setItem('favorites', favs);
+          localStorage.setItem('favorites', JSON.stringify(favs));
         }
       }
       state.FAVORITES = localStorage.getItem('favorites');
