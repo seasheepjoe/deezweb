@@ -1,6 +1,10 @@
 <template>
 	<div id="favorites">
-		<div id="results">
+		<div class="page-info">
+			<h1 id="page-title">Mes favoris</h1>
+			<p id="page-description">Liste de mes titres favoris :</p>
+		</div>
+		<div class="results">
 			<p v-if="error !== ''">{{ error }}</p>
 			<MusicCard
 				v-if="tracks.length !== 0"
@@ -9,7 +13,7 @@
 				:track="item"
 				@onFavRemove="removeFav(index)"
 			/>
-			<Loader v-if="isLoading"/>
+			<Loader id="loader" v-if="isLoading"/>
 		</div>
 		<h2 v-if="gotResults === true && tracks.length === 0">Aucun résultat</h2>
 	</div>
@@ -67,8 +71,26 @@ export default {
 </script>
 
 <style scoped>
-#favorites,
-#results {
+#favorites {
 	margin: 10px 50px;
+}
+#page-title {
+	font-size: 50px;
+}
+
+#page-description {
+	font-size: 20px;
+}
+
+.results {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+#loader {
+	margin: 0 auto;
 }
 </style>
