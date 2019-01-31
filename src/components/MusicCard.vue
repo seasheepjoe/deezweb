@@ -83,8 +83,12 @@ export default {
 	font-weight: bold;
 }
 
+.player {
+	width: 100%;
+}
+
 #music-player {
-	width: 450px;
+	width: 100%;
 	margin: 15px 0 0 0;
 }
 
