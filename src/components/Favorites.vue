@@ -50,6 +50,7 @@ export default {
 				favs = JSON.parse(favs);
 				this.tracks = favs;
 				this.isLoading = false;
+				this.gotResults = true;
 			}
 		},
 		removeFav(index) {
